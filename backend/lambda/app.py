@@ -27,12 +27,12 @@ def get_features(sm_runtime_client, sagemaker_endpoint, img_bytes):
 
 
 def get_neighbors(features, es, k_neighbors=3):
-    idx_name = 'idx_zalando'
+    idx_name = 'idx'
     res = es.search(
         request_timeout=30, index=idx_name,
         body={
             'size': k_neighbors,
-            'query': {'knn': {'zalando_img_vector': {'vector': features, 'k': k_neighbors}}}}
+            'query': {'knn': {'img_vector': {'vector': features, 'k': k_neighbors}}}}
         )
     s3_uris = [res['hits']['hits'][x]['_source']['image'] for x in range(k_neighbors)]
 
