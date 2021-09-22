@@ -60,7 +60,13 @@ $(aws ecr get-login --region ${region} --no-include-email)
 # Build the docker image locally with the image name and then push it to ECR
 # with the full name.
 
-docker build  -t ${image} .
+if [[ $region =~ ^cn.* ]]
+then
+    docker build  -t ${image} -f Dockerfile.cn .
+else
+    docker build  -t ${image} -f Dockerfile .
+fi
+
 docker tag ${image} ${fullname}
 
 docker push ${fullname}
