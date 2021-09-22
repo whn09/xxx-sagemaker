@@ -27,7 +27,7 @@ Resources:
   PostFetchSimilarPhotosLambda:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://${BucketName}/backend/function.zip
+      CodeUri: s3://S3_BUCKET_NAME/backend/function.zip
       Handler: app.lambda_handler
       Runtime: python3.7
       Environment:
