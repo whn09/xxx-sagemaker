@@ -44,7 +44,7 @@ Resources:
           Action:
           - sagemaker:InvokeEndpoint
           Resource:
-          - Fn::Sub: arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:endpoint/${SagemakerEndpoint}
+          - Fn::Sub: arn:aws-cn:sagemaker:${AWS::Region}:${AWS::AccountId}:endpoint/${SagemakerEndpoint}
       - Version: '2012-10-17'
         Statement:
         - Sid: AllowESS
@@ -52,7 +52,7 @@ Resources:
           Action:
           - es:*
           Resource:
-          - Fn::Sub: arn:aws:es:${AWS::Region}:${AWS::AccountId}:domain/${DomainName}/*
+          - Fn::Sub: arn:aws-cn:es:${AWS::Region}:${AWS::AccountId}:domain/${DomainName}/*
       - S3ReadPolicy:
           BucketName:
             Ref: BucketName
@@ -71,7 +71,7 @@ Outputs:
   ImageSimilarityApi:
     Description: API Gateway endpoint URL for Prod stage for fetchPhoto function
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com.cn/Prod/
   PostFetchSimilarPhotosLambda:
     Description: Hello World Lambda Function ARN
     Value:
